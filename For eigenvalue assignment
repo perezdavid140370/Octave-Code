@@ -1,0 +1,13 @@
+n=2; %size of square matrices
+N=100; %100 examples
+x=zeros(1,N); %initialize vector to store data
+for k=1:N
+A=rand(n,n); %create a random nxn matrix
+lambda=eig(A); %compute the eigenvalues of A
+x(1,k)=isreal(lambda); %enter 1 in x if all eigenvalues are real, 0 otherwise
+endfor
+s=sum(x(:)==1); %count the number of times the eigenvalues were real
+y=[s,N-s]; %data with number of times real, number not
+pie(y)
+
+%this creates a pie chart showing the number of times out of 100 the matrices had real eigenvalues. We can vary the n to get varying sizes of matrices and we see that as n increases the number of matrices that do not have real eigenvalues increase.
